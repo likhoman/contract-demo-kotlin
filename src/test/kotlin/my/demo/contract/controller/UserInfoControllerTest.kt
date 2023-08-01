@@ -17,7 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.reactive.server.WebTestClient
 
-@MockServerConfig(hostInterface = "localhost")
+@MockServerConfig
 
 @PactConsumerTest
 @PactTestFor(providerName = "provider", pactVersion = PactSpecVersion.V4)
@@ -29,6 +29,7 @@ class UserInfoControllerTest {
     @Autowired
     lateinit var webTestClient: WebTestClient
 
+    @SuppressWarnings("unused")
     @Pact(provider = "provider", consumer = "consumer")
     fun userInfoPact(builder: PactDslWithProvider): V4Pact {
         return builder
